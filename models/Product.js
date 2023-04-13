@@ -5,31 +5,27 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  author: {
-    type: String,
-    required: true,
-  },
   description: {
     type: String,
     required: true,
   },
-  descriptionFull: {
+  imgUrl: {
     type: String,
     required: true,
   },
-  year: {
-    type: Number,
+  sizes: {
+    type: Array,
     required: true,
   },
-  pages: {
-    type: Number,
+  colors: {
+    type: Array,
     required: true,
   },
-  weight: {
-    type: Number,
+  gender: {
+    type: String,
     required: true,
   },
-  imgUrl: {
+  material: {
     type: String,
     required: true,
   },
@@ -38,10 +34,6 @@ const ProductSchema = new mongoose.Schema({
     required: true,
   },
   price: {
-    type: Number,
-    required: true,
-  },
-  stock: {
     type: Number,
     required: true,
   },

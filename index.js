@@ -17,7 +17,7 @@ app.use(cors());
 //Connect to DB and create server
 mongoose
   .connect(
-    'mongodb+srv://brod:12BroD21@cluster.8z0udat.mongodb.net/bookstore?retryWrites=true&w=majority',
+    'mongodb+srv://brod:12BroD21@cluster.8z0udat.mongodb.net/sportstore?retryWrites=true&w=majority',
   )
   .then(() => console.log('DB ok'))
   .catch((err) => console.log(err));
