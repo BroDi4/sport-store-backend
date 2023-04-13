@@ -5,9 +5,11 @@ import cors from 'cors';
 import * as productController from './controllers/productController.js';
 import * as categoryController from './controllers/categoryController.js';
 import * as orderController from './controllers/orderController.js';
+import * as userController from './controllers/userController.js';
 
-import { orderValidation } from './validations.js';
-import { handleValidationsErrors } from './handleValidationsErrors.js';
+import { orderValidation, userValitdation } from './validations.js';
+import { handleValidationsErrors } from './utils/handleValidationsErrors.js';
+import checkAuth from './utils/checkAuth.js';
 
 const app = express();
 
@@ -37,4 +39,10 @@ app.get('/products/:id', productController.getOne);
 
 app.get('/categories', categoryController.getCategory);
 
-app.post('/order', orderController.createOrder);
+app.get('/auth', checkAuth, userController.auth);
+
+app.post('/order', checkAuth, orderController.createOrder);
+
+app.post('/login', userController.login);
+
+app.post('/register', userValitdation, handleValidationsErrors, userController.reqister);

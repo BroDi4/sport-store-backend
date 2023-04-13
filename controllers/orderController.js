@@ -3,9 +3,7 @@ import OrderModel from '../models/Order.js';
 export const createOrder = async (req, res) => {
   try {
     const doc = new OrderModel({
-      email: req.body.email,
-      fullname: req.body.fullname,
-      phone: req.body.phone,
+      user: req.userId,
       orders: req.body.orders,
     });
 
@@ -17,7 +15,7 @@ export const createOrder = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      error: 'Не удалось сохранить заказ',
+      msg: 'Не удалось сохранить заказ',
     });
   }
 };

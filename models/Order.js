@@ -1,19 +1,20 @@
 import mongoose from 'mongoose';
 
-const OrderSchema = mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
+const OrderSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    orders: {
+      type: Array,
+      required: true,
+    },
   },
-  fullname: {
-    type: String,
-    required: true,
+  {
+    timestamps: true,
   },
-  phone: Number,
-  orders: {
-    type: Array,
-    required: true,
-  },
-});
+);
 
 export default mongoose.model('Order', OrderSchema);
