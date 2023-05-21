@@ -80,7 +80,7 @@ export const reqister = async (req, res) => {
   }
 };
 
-export const auth = async (req, res) => {
+export const getUser = async (req, res) => {
   try {
     const user = await UserModel.findById(req.userId);
     const { paswordHash, ...userInfo } = user._doc;
@@ -93,6 +93,29 @@ export const auth = async (req, res) => {
         msg: 'Пользователь не найден',
       });
     }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      msg: 'Нет доступа',
+    });
+  }
+};
+
+export const update = async (req, res) => {
+  try {
+    await UserModel.updateOne(
+      {
+        _id: req.userId,
+      },
+      {
+        fullname: req.body.fullname,
+        cart: req.body.cart,
+        favorites: req.body.favorites,
+      },
+    );
+    res.status(200).json({
+      success: true,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({

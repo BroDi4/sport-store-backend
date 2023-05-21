@@ -7,7 +7,7 @@ import * as categoryController from './controllers/categoryController.js';
 import * as orderController from './controllers/orderController.js';
 import * as userController from './controllers/userController.js';
 
-import { orderValidation, userValitdation } from './validations.js';
+import { userValitdation } from './validations.js';
 import { handleValidationsErrors } from './utils/handleValidationsErrors.js';
 import checkAuth from './utils/checkAuth.js';
 
@@ -39,10 +39,12 @@ app.get('/products/:id', productController.getOne);
 
 app.get('/categories', categoryController.getCategory);
 
-app.get('/auth', checkAuth, userController.auth);
-
 app.post('/order', checkAuth, orderController.createOrder);
 
 app.post('/login', userController.login);
 
 app.post('/register', userValitdation, handleValidationsErrors, userController.reqister);
+
+app.get('/user', checkAuth, userController.getUser);
+
+app.patch('/user', checkAuth, userController.update);

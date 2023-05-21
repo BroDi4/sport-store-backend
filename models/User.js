@@ -11,6 +11,14 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    cart: {
+      type: Array,
+      default: [],
+    },
+    favorites: {
+      type: Array,
+      default: [],
+    },
     paswordHash: {
       type: String,
       required: true,
