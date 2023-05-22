@@ -5,6 +5,8 @@ export const createOrder = async (req, res) => {
     const doc = new OrderModel({
       user: req.userId,
       orders: req.body.orders,
+      type: req.body.type,
+      address: req.body.address,
     });
 
     const data = await doc.save();

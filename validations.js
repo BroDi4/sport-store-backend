@@ -8,6 +8,6 @@ export const orderValidation = [
 
 export const userValitdation = [
   body('email', 'Неправильный формат почты').isEmail(),
-  body('fullname', 'Укажите имя').isLength({ min: 3 }),
-  body('password', 'Укажите пароль').isLength({ min: 5 }),
+  body('fullname', 'Минимальное количество символов для имени - 3').isLength({ min: 3 }),
+  body('password', 'Минимальное количество символов для пароля - 5').isLength({ min: 5 }),
 ];

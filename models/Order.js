@@ -11,6 +11,11 @@ const OrderSchema = new mongoose.Schema(
       type: Array,
       required: true,
     },
+    type: {
+      type: String,
+      required: true,
+    },
+    address: String,
   },
   {
     timestamps: true,
