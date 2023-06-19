@@ -25,7 +25,7 @@ app.listen(process.env.PORT || 4000, (err) => {
   if (err) {
     console.log(err);
   }
-  console.log('Server started');
+  console.log(`Server started on port ${process.env.PORT || 4000}`);
 });
 
 app.get('/products', productController.getALl);
